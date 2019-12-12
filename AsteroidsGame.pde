@@ -1,12 +1,15 @@
-//your variable declarations here
 Spaceship ship = new Spaceship(); 
 Star[] twinkle = new Star [90];
+ArrayList <Asteroid> bigStars = new ArrayList<Asteroid>();
 public void setup() 
 {
   //your code here
   size(600,600);
   for (int i = 0; i < twinkle.length; i++){
     twinkle[i] = new Star();
+  }
+   for (int i = 0; i < 11; i++){
+    bigStars.add(new Asteroid());
   }
 }
 public void draw() 
@@ -18,6 +21,10 @@ public void draw()
    for(int i = 0; i < twinkle.length; i++){
     twinkle[i].show();
   }
+    for(int i = 0; i < bigStars.size(); i++){
+    bigStars.get(i).show();
+    bigStars.get(i).move();
+  }  
 }
 public void keyPressed(){
 	if (key == 'h'){
