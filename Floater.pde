@@ -73,20 +73,5 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     rotate(-1*dRadians);
     translate(-1*(float)myCenterX, -1*(float)myCenterY);
   }   
-  public void setmyDirectionX(int num){
-     myDirectionX=num; 
-  }
-  public void setmyDirectionY(int bum){
-    myDirectionY = bum;
-  }
-  public void setmyX(int c){
-    myCenterX= c;
-  }
-  public void setmyY(int p){
-    myCenterY =p;
-  }
-  public void setmyPoint(int f){
-    myPointDirection = f;
-  }
-
+ 
 } 
