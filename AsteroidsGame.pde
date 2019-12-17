@@ -1,7 +1,8 @@
-//your variable declarations here
+
 Spaceship ship = new Spaceship(); 
 Star[] twinkle = new Star [90];
 ArrayList <Asteroid> bigStars = new ArrayList<Asteroid>();
+ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 public void setup() 
 {
   //your code here
@@ -24,8 +25,26 @@ public void draw()
     bigStars.get(i).show();
     bigStars.get(i).move();
   }  
+  for(int i = 0; i < bullets.size(); i++){
+    bullets.get(i).move();
+    bullets.get(i).show();
+    if(bullets.get(i).getX() > 599 || bullets.get(i).getX() < 1 ||  bullets.get(i).getY() > 599 || bullets.get(i).getY() < 1){
+        bullets.remove(i);
+    }
+  }
+  for(int i = 0; i < bullets.size(); i++){
+  for(int z = 0; z < bigStars.size(); z++){
+      float distance2 = dist(bullets.get(i).getX(), bullets.get(i).getY(), bigStars.get(z).getX(), bigStars.get(z).getY());
+      if(distance2 < 20){
+        bigStars.remove(z);
+        bullets.remove(i);
+        break;
+      }
+    }
+  }
   ship.show();
   ship.move();
+ 
 }
 public void keyPressed(){
 	if (key == 'h'){
@@ -43,7 +62,7 @@ public void keyPressed(){
     } else if (key == 's'){ 
     	ship.accelerate(-.10);
     }
-    //else if(key == ' '){ 
-    //bullets.add(new Bullet(ship));
-    //}
+    else if(key == ' '){ 
+    bullets.add(new Bullet(ship));
+    }
 }
